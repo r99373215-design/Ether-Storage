@@ -45,12 +45,12 @@ button {
     position: relative;
 }
 
-.main-banner {
+.super-banner {
     width: 100% !important; /* Насильно заставляем картинку быть по ширине экрана */
     height: 100% !important;
-    object-fit: cover;
-    object-position: center -30%; /* Картинка автоматически подстроится и обрежется по краям без искажений */
-    display: block;
+    object-fit: cover !important;
+    object-position: center bottom !important; /* Картинка автоматически подстроится и обрежется по краям без искажений */
+    display: block !important;
 }
 
 /* На всякий случай сброс для всего боди, чтобы ничего не уезжало вбок */
