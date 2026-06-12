@@ -49,7 +49,7 @@ button {
     width: 100% !important; /* Насильно заставляем картинку быть по ширине экрана */
     height: 100% !important;
     object-fit: cover;
-    object-position: center 0%; /* Картинка автоматически подстроится и обрежется по краям без искажений */
+    object-position: center -30%; /* Картинка автоматически подстроится и обрежется по краям без искажений */
     display: block;
 }
 
