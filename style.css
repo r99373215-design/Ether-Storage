@@ -51,7 +51,7 @@ button {
     object-fit: cover !important;
     object-position: center bottom !important; /* Картинка автоматически подстроится и обрежется по краям без искажений */
     display: block !important;
-    margin-top: -50px
+    margin-top: -80px
 }
 
 /* На всякий случай сброс для всего боди, чтобы ничего не уезжало вбок */
