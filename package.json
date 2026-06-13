@@ -1,0 +1,24 @@
+{
+  "name": "ether-storage",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ether-storage-bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/r99373215-design/Ether-Storage.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/r99373215-design/Ether-Storage/issues"
+  },
+  "homepage": "https://github.com/r99373215-design/Ether-Storage#readme",
+  "dependencies": {
+    "telegraf": "^4.16.3"
+  }
+}

@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>Ether Storage</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-   <link rel="stylesheet" href="style.css?v=2">
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 <body>
     <main class="app">
@@ -21,9 +21,6 @@
             </div>
         </header>
     
-  
-      
-
         <section class="search" aria-label="Поиск">
             <label class="search__field">
                 <span aria-hidden="true">⌕</span>
@@ -69,72 +66,87 @@
             </div>
         </section>
 
-        <section class="products" aria-labelledby="products-title">
-            <h2 id="products-title">Все товары</h2>
+        <div class="product-grid">
+            <article class="product-card">
+                <div class="product-card__media">
+                    <img src="jordan.jpg.jpg" alt="jordans">
+                    <span class="badge badge--new">NEW</span>
+                </div>
+                <div class="product-card__info">
+                    <div>
+                        <h3>Кроссовки Nike Air Jordan 6 Retro Hare</h3>
+                        <p>6 990 ₽</p>
+                        <p class="product-sizes">Размеры: 43 (27cm)</p>
+                    </div>
+                    <button class="cart-button" type="button" 
+                            data-title="Nike Air Jordan 6 Retro Hare" 
+                            data-price="6990" 
+                            aria-label="Добавить в корзину">
+                        <span aria-hidden="true">🛒</span>
+                    </button>
+                </div>
+            </article>
 
-            <div class="product-grid">
-                <article class="product-card">
-                    <div class="product-card__media">
-                        <img src="jordan.jpg.jpg" alt="jordans">
-                        <span class="badge badge--new">NEW</span>
-                        
+            <article class="product-card">
+                <div class="product-card__media">
+                    <img src="7b722aa0-8040-4778-9237-5f59e873020a.jpg" alt="Bape tshirt">
+                    <span class="badge badge--sale">-6%</span>
+                </div>
+                <div class="product-card__info">
+                    <div>
+                        <h3>Футболка Aape</h3>
+                        <p>1 990 ₽</p>
+                        <p class="product-sizes">Размеры: L</p>
                     </div>
-                    <div class="product-card__info">
-                        <div>
-                            <h3>Кроссовки Nike Air Jordan 6 Retro Hare</h3>
-                            <p>6 990 ₽</p>
-                            <p class="product-description">Культовые кроссовки в стиле ретро с ярким дизайном и комфортом для повседнев[...]
-                            <p class="product-sizes">Размеры: 43 (27cm)</p>
-                        </div>
-                        <button class="cart-button" type="button" aria-label="Добавить Кроссовки Nike Air Jordan 6 Retro Hare в корзину">
-                            <span aria-hidden="true">🛒</span>
-                        </button>
-                    </div>
-                </article>
+                    <button class="cart-button" type="button" 
+                            data-title="Футболка Aape" 
+                            data-price="1990" 
+                            aria-label="Добавить в корзину">
+                        <span aria-hidden="true">🛒</span>
+                    </button>
+                </div>
+            </article>
 
-                <article class="product-card">
-                    <div class="product-card__media">
-                        <img src="7b722aa0-8040-4778-9237-5f59e" alt="Bape tshirt">
-                        <span class="badge badge--sale">-6%</span>
-                      
+            <article class="product-card">
+                <div class="product-card__media">
+                    <img src="nike.jpg" alt="Nike Air Force Mid 1">
+                    <span class="badge badge--new">NEW</span>
+                </div>
+                <div class="product-card__info">
+                    <div>
+                        <h3>Nike Air Force Mid 1</h3>
+                        <p>4 990 ₽</p>
+                        <p class="product-sizes">Размеры: 41, 42</p>
                     </div>
-                    <div class="product-card__info">
-                        <div>
-                            <h3>Футболка Aape</h3>
-                            <p>1990 ₽</p>
-                             <p class="product-sizes">Размеры: L </p>
-                            
-                        </div>
-                        <button class="cart-button" type="button" aria-label="Добавить Футболка Aape в корзину">
-                            <span aria-hidden="true">🛒</span>
-                        </button>
-                    </div>
-                </article>
+                    <button class="cart-button" type="button" 
+                            data-title="Nike Air Force Mid 1" 
+                            data-price="4990" 
+                            aria-label="Добавить в корзину">
+                        <span aria-hidden="true">🛒</span>
+                    </button>
+                </div>
+            </article>
+        </div>
 
-                <article class="product-card">
-                    <div class="product-card__media">
-                        <img src="nike.jpg" alt="Nike Air Force Mid 1">
-                        <span class="badge badge--new">NEW</span>
-                    
-                    </div>
-                    <div class="product-card__info">
-                        <div>
-                            <h3>Nike Air Force Mid 1</h3>
-                            <p>4990 ₽,шт </p>
-                             <p class="product-sizes">Размеры: 41,(26см 2шт),42(26,5см 1шт) </p>
-                            
-                        </div>
-                        <button class="cart-button" type="button" aria-label="Добавить Tech Jacket в корзину">
-                            <span aria-hidden="true">🛒</span>
-                        </button>
-                    </div>
-                </article>
-
-              
-            </div>
-        </section>
     </main>
 
+    <button id="cart-toggle-btn">🛒 Корзина (<span id="cart-count">0</span>)</button>
+
+    <div id="cart-modal" class="hidden">
+        <div class="cart-content">
+            <h2>Ваша корзина</h2>
+            
+            <div id="cart-items"></div>
+            
+            <div class="cart-total">
+                <span>Итого:</span>
+                <span><span id="cart-total-price">0</span> ₽</span>
+            </div>
+            
+            <button id="checkout-btn">Оплатить заказ</button>
+            <button id="close-cart-btn">Закрыть</button>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>

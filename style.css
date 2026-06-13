@@ -19,14 +19,6 @@ html {
     background: var(--bg);
 }
 
-body {
-    min-height: 100%;
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-}
-
 button,
 input {
     font: inherit;
@@ -60,6 +52,9 @@ body {
     background-color: #000000;
     overflow-x: hidden;
     width: 100%;
+    min-height: 100%;
+    color: var(--text);
+    font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
 }
 
 .profile-left {
@@ -85,7 +80,8 @@ body {
     width: min(100%, 480px);
     min-height: 100vh;
     margin: 0 auto;
-    padding: 12px 14px calc(28px + env(safe-area-inset-bottom));
+    /* Am mărit padding-bottom de la 28px la 90px ca butonul de coș să nu acopere produsele din grilă */
+    padding: 12px 14px calc(90px + env(safe-area-inset-bottom));
 }
 
 .hero {
@@ -383,6 +379,164 @@ body {
     background: #d8ff4f;
 }
 
+/* ===================================================================
+   AICI INCEPE SISTEMUL DE CART INTEGRAT PERFECT CU VARIABLELE TALE
+   =================================================================== */
+
+/* Utilitate pentru ascunderea ferestrei */
+.hidden {
+    display: none !important;
+}
+
+/* Butonul mare plutitor pentru deschiderea cosului */
+#cart-toggle-btn {
+    position: fixed;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 28px);
+    max-width: 452px; /* Se potriveste perfect pe latimea aplicatiei tale (480px minus padding) */
+    height: 52px;
+    background: var(--blue);
+    color: var(--text);
+    border-radius: 16px;
+    font-weight: 700;
+    font-size: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background 0.2s ease, transform 0.1s ease;
+}
+
+#cart-toggle-btn:active {
+    transform: translateX(-50%) scale(0.98);
+    background: #1a66ff;
+}
+
+/* Fundalul intunecat cand se deschide cosul */
+#cart-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(4px);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 14px;
+}
+
+/* Fereastra pop-up cu elementele din cos */
+.cart-content {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-content h2 {
+    margin: 0 0 16px 0;
+    font-size: 20px;
+    font-weight: 700;
+    text-align: center;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 12px;
+}
+
+/* Zona unde se aduna produsele cumparate */
+#cart-items {
+    max-height: 220px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* Stilul fiecarui produs adaugat in lista */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--surface-soft);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+.cart-item span:first-child {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 70%;
+}
+
+.cart-item span:last-child {
+    font-weight: 700;
+    color: var(--blue);
+}
+
+/* Sectiunea cu pretul total */
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 14px;
+    border-top: 1px solid var(--line);
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 18px;
+}
+
+/* Butonul principal rusesc pentru plata */
+#checkout-btn {
+    width: 100%;
+    height: 48px;
+    background: #34c759; /* Culoare verde premium pentru actiunea de succes */
+    color: #ffffff;
+    border-radius: 14px;
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 6px;
+    transition: opacity 0.15s ease;
+}
+
+#checkout-btn:active {
+    opacity: 0.85;
+}
+
+/* Butonul de inchidere */
+#close-cart-btn {
+    width: 100%;
+    height: 40px;
+    background: transparent;
+    color: var(--muted);
+    border-radius: 14px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: color 0.15s ease;
+}
+
+#close-cart-btn:active {
+    color: var(--red);
+}
+
+/* =================================================================== */
+
+/* Media queries originale de la tine */
 @media (max-width: 360px) {
     .app {
         padding-inline: 10px;
